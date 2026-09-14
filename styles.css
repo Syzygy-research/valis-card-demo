@@ -143,3 +143,18 @@ button.primary { background: var(--gold); color: #111; border-color: var(--gold)
 .v-card[data-type="approval"] .pill { color: var(--green); background: rgba(91,226,123,.12); }
 .v-card[data-type="hold"] { border-color: rgba(255,107,107,.40); }
 .v-card[data-type="hold"] .pill { color: var(--red); background: rgba(255,107,107,.12); }
+.action-log {
+  border: 1px solid rgba(91,226,123,.46);
+  border-radius: 24px;
+  padding: 18px;
+  margin: 18px 0 22px;
+  background: linear-gradient(145deg, rgba(91,226,123,.13), rgba(255,255,255,.045));
+  box-shadow: 0 18px 58px rgba(0,0,0,.30);
+}
+.action-log[data-type="hold"] { border-color: rgba(255,107,107,.48); background: linear-gradient(145deg, rgba(255,107,107,.13), rgba(255,255,255,.045)); }
+.action-log[data-type="approval"] { border-color: rgba(214,164,0,.62); background: linear-gradient(145deg, rgba(214,164,0,.16), rgba(255,255,255,.045)); }
+.action-log h2 { margin-top: 8px; }
+.action-log p:last-child { margin-bottom: 0; color: rgba(255,255,255,.86); font-size: 18px; line-height: 1.45; }
+button { cursor: pointer; transition: transform .16s ease, background .16s ease, border-color .16s ease; }
+button:active { transform: translateY(1px) scale(.98); }
+button.danger { background: rgba(255,107,107,.16); border-color: rgba(255,107,107,.42); color: #fff; }

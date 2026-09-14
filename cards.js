@@ -14,8 +14,8 @@ const cards = [
     receipt: { id: "GMAP-SESSION-STARTUP-20260914-150228-280" },
     boundary: "This proves readiness and routing. It does not approve or execute a new action.",
     nextActions: [
-      { label: "View receipt", kind: "view", requiresGmap: false },
-      { label: "Save proof", kind: "save", requiresGmap: false }
+      { label: "View receipt", kind: "view", message: "Receipt readback opened. This is evidence, not approval." },
+      { label: "Save proof", kind: "save", message: "Proof card saved to the session record in this demo." }
     ]
   },
   {
@@ -31,8 +31,8 @@ const cards = [
     ],
     boundary: "Artifacts inform. They do not authorize consequence.",
     nextActions: [
-      { label: "Open", kind: "view", requiresGmap: false },
-      { label: "Share after voice", kind: "share", requiresGmap: false }
+      { label: "Open", kind: "view", message: "Artifact expanded for review. It can be discussed without authorizing action." },
+      { label: "Share after voice", kind: "share", message: "Share queued for after voice. External publishing would require the proper route." }
     ]
   },
   {
@@ -48,7 +48,7 @@ const cards = [
     ],
     boundary: "This is a display-route hold, not a VALIS authority failure.",
     nextActions: [
-      { label: "Use inline card", kind: "repair", requiresGmap: false }
+      { label: "Use inline card", kind: "repair", message: "Repair selected: use in-thread cards first, hosted links second." }
     ]
   },
   {
@@ -64,17 +64,28 @@ const cards = [
     ],
     boundary: "Only approval cards can authorize consequence, and only after valid GMAP release.",
     nextActions: [
-      { label: "Approve", kind: "approve", requiresGmap: true },
-      { label: "Deny", kind: "deny", requiresGmap: true }
+      { label: "Approve", kind: "approve", requiresGmap: true, message: "Demo approval tapped. In production this would require real GMAP binding and exact release." },
+      { label: "Deny", kind: "deny", requiresGmap: true, message: "Demo denial tapped. Consequence remains blocked." }
     ]
   }
 ];
 
 const stack = document.querySelector("#cards");
 const tmpl = document.querySelector("#card-template");
+const actionLog = document.querySelector("#action-log");
+const actionTitle = document.querySelector("#action-title");
+const actionBody = document.querySelector("#action-body");
 
 function labelFor(card) {
   return `${card.cardType} · ${card.status}`;
+}
+
+function showAction(card, action) {
+  actionLog.hidden = false;
+  actionLog.dataset.type = card.cardType;
+  actionTitle.textContent = `${action.label} · ${card.title}`;
+  actionBody.textContent = action.message || `${action.label} selected.`;
+  actionLog.scrollIntoView({ behavior: "smooth", block: "nearest" });
 }
 
 for (const card of cards) {
@@ -102,8 +113,11 @@ for (const card of cards) {
   const actions = node.querySelector(".actions");
   for (const action of card.nextActions || []) {
     const btn = document.createElement("button");
+    btn.type = "button";
     btn.textContent = action.requiresGmap ? `${action.label} · GMAP` : action.label;
     if (action.kind === "approve") btn.classList.add("primary");
+    if (action.kind === "deny") btn.classList.add("danger");
+    btn.addEventListener("click", () => showAction(card, action));
     actions.append(btn);
   }
   stack.append(node);
