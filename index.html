@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>VALIS Card Surface Prototype</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<main>
+  <header class="hero">
+    <p class="eyebrow">VALIS · Mobile Voice Cards</p>
+    <h1>Voice stays live. Proof appears in-thread.</h1>
+    <p class="lede">A prototype for proof, artifact, hold, receipt, and approval-style cards. Informational cards never authorize consequence; GMAP approval cards do.</p>
+  </header>
+
+  <section class="stack" id="cards"></section>
+
+  <template id="card-template">
+    <article class="v-card">
+      <div class="card-topline">
+        <span class="pill"></span>
+        <span class="authority"></span>
+      </div>
+      <h2></h2>
+      <p class="claim"></p>
+      <dl class="evidence"></dl>
+      <div class="receipt-block"></div>
+      <p class="boundary"></p>
+      <div class="actions"></div>
+    </article>
+  </template>
+</main>
+<script src="cards.js"></script>
+</body>
+</html>
