@@ -1,0 +1,74 @@
+[
+  {
+    "cardType": "proof",
+    "title": "GMAP is bound for this session",
+    "claim": "The approval surface is available and consequential work must route through GMAP.",
+    "status": "verified",
+    "authorityEffect": "none",
+    "evidence": [
+      { "label": "Identity", "value": "identity_bound" },
+      { "label": "Session", "value": "session_ready" },
+      { "label": "GMAP", "value": "gmap_bound" },
+      { "label": "Transport", "value": "VALIS_GMAP_TRANSPORT_REATTACH_READY" },
+      { "label": "Approval surface", "value": "GMAP / card available" },
+      { "label": "Routing", "value": "GMAP_REQUIRED" },
+      { "label": "Speaker", "value": "Noetica speaker projection admitted_settled" }
+    ],
+    "receipt": { "id": "GMAP-SESSION-STARTUP-20260914-150228-280" },
+    "boundary": "This proves session readiness and GMAP routing. It does not approve or execute a new action.",
+    "nextActions": [
+      { "label": "View receipt", "kind": "view", "message": "Receipt readback opened. This is evidence, not approval." },
+      { "label": "Save proof", "kind": "save", "message": "Proof card saved to the session record in this demo." }
+    ]
+  },
+  {
+    "cardType": "artifact",
+    "title": "Mobile voice card surface prototype",
+    "claim": "Ricky asked for cards that stay visible in mobile voice; VALIS produced a public card surface prototype.",
+    "status": "published",
+    "authorityEffect": "none",
+    "evidence": [
+      { "label": "Public URL", "value": "https://syzygy-research.github.io/valis-card-demo/" },
+      { "label": "Repo", "value": "Syzygy-research/valis-card-demo" },
+      { "label": "Latest update", "value": "interactive buttons published" }
+    ],
+    "boundary": "This artifact demonstrates the target user experience. It is not a native ChatGPT/VALIS host card yet.",
+    "nextActions": [
+      { "label": "Open", "kind": "view", "message": "Artifact expanded for review. It can be discussed without authorizing action." },
+      { "label": "Share after voice", "kind": "share", "message": "Share queued for after voice. External publishing would require the proper route." }
+    ]
+  },
+  {
+    "cardType": "hold",
+    "title": "Native host card surface not yet available",
+    "claim": "This web demo proves the card schema and interaction, but the mobile voice host still needs a native in-thread card component.",
+    "status": "held",
+    "authorityEffect": "none",
+    "evidence": [
+      { "label": "Text card", "value": "works in chat but looks like text" },
+      { "label": "Browser link", "value": "works but can leave voice flow" },
+      { "label": "Need", "value": "native proof/artifact/hold/receipt card surface" }
+    ],
+    "boundary": "This is a product-surface hold, not an authority failure.",
+    "nextActions": [
+      { "label": "Use web demo", "kind": "repair", "message": "Repair selected: use web demo now, native in-thread card later." }
+    ]
+  },
+  {
+    "cardType": "approval",
+    "title": "Example GMAP approval card",
+    "claim": "This card type is reserved for exact consequential release.",
+    "status": "demo",
+    "authorityEffect": "requests_release",
+    "evidence": [
+      { "label": "Action", "value": "deploy exact artifact digest" },
+      { "label": "Digest", "value": "sha256:example" },
+      { "label": "Expiry", "value": "single-use / bounded" }
+    ],
+    "boundary": "Only approval cards can authorize consequence, and only after valid GMAP release. This demo does not approve anything.",
+    "nextActions": [
+      { "label": "Approve", "kind": "approve", "requiresGmap": true, "message": "Demo approval tapped. In production this would require real GMAP binding and exact release." },
+      { "label": "Deny", "kind": "deny", "requiresGmap": true, "message": "Demo denial tapped. Consequence remains blocked." }
+    ]
+  }
+]
