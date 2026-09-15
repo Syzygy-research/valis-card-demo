@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>VALIS Card Surface Prototype</title>
+<title>VALIS Mobile Card Surface</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -11,10 +11,16 @@
   <header class="hero">
     <p class="eyebrow">VALIS · Mobile Voice Cards</p>
     <h1>Voice stays live. Proof appears in-thread.</h1>
-    <p class="lede">A prototype for proof, artifact, hold, receipt, and approval-style cards. Informational cards never authorize consequence; GMAP approval cards do.</p>
+    <p class="lede">A working mobile card surface for proof, artifacts, holds, receipts, and approval-style actions. Informational cards keep you oriented. Approval cards are the only cards that can request consequential release.</p>
   </header>
 
-  <section class="action-log" id="action-log" hidden>`n    <p class="eyebrow">Selected action</p>`n    <h2 id="action-title">No action selected</h2>`n    <p id="action-body">Tap a card button to see what the action means.</p>`n  </section>`n`n  <section class="stack" id="cards"></section>
+  <section class="action-log" id="action-log" hidden>
+    <p class="eyebrow">Selected action</p>
+    <h2 id="action-title">No action selected</h2>
+    <p id="action-body">Tap a card button to see what the action means.</p>
+  </section>
+
+  <section class="stack" id="cards"></section>
 
   <template id="card-template">
     <article class="v-card">
@@ -34,4 +40,3 @@
 <script src="cards.js"></script>
 </body>
 </html>
-
